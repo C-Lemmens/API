@@ -1,3 +1,7 @@
-FROM ubuntu:20.04
-RUN apt-get -y update
-RUN apt-get -y install nginx
+FROM node:latest
+WORKDIR ./
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8080
+CMD ["node", "index.js"]
